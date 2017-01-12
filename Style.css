@@ -1,0 +1,81 @@
+.liPSC_post
+{
+	border: 1px solid #BBBBBB;
+	margin-bottom: 30px;
+	padding: 10px;
+	min-height: 250px;
+	position:relative;
+}
+h2.liPSC_post_title
+{
+    margin-bottom: 0;
+}
+.liPSC_post_title a
+{
+	text-decoration: none;
+}
+.liPSC_post_meta_date
+{
+	font-size: .7em;
+	margin-bottom: 5px;
+}
+.liPSC_post_thumb
+{
+	float: left;
+	padding: 4px 14px 4px 4px;
+	width: 150px;
+}
+.liPSC_post_content
+{
+	margin-bottom: 25px;
+}
+.liPSC_post_readmore
+{
+	position:absolute;
+	bottom:0;
+	right:0;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	background-color: #E6E6E6;
+	padding: 3px 8px;
+}
+.liPSC_post_readmore a
+{
+	color: #F46108;
+	text-decoration: none;
+}
+
+
+
+
+/* TILES */
+.liPSC_post_tiles
+{
+	border: 1px solid #BBBBBB;
+	margin-bottom: 30px;
+	padding: 10px;
+	min-height: 250px;
+	position:relative;
+	
+	display: flex;
+    flex-flow: row;
+	flex-wrap: wrap;
+    justify-content: center;
+}
+.liPSC_tile
+{
+	width: 160px;
+	height: 230px;
+	float: left;
+	border: 1px solid #BBBBBB;
+	margin: 3px;
+	padding: 3px;
+	text-align: center;
+	overflow: hidden;
+}
+.liPSC_tile img
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 150px;
+}
