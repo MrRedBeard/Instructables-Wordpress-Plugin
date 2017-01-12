@@ -1,12 +1,12 @@
 === Plugin Name ===
 Contributors: ukthebunny
-Donate link: http://www.badbirdhouse.com/wordpress/plugins/instructables/
+Donate link: http://www.mickred.com/store/
 Tags: instructables, feed, rss, xml, list, projects
 Requires at least: 3.0.1
 Tested up to: 4.1
 Stable tag: 1
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: MIT
+License URI: https://raw.githubusercontent.com/MrRedBeard/Instructables-Wordpress-Plugin/master/LICENSE
 
 == Description ==
 
@@ -44,18 +44,10 @@ Display a list of a user's favorite projects
 
 == Changelog ==
 
-= 1.3.0 =
-* Corrected issues with style sheet
-* Function prefix names changed to be unique to this project
-* Added a new feature using a method given by danja.mewes on Instructables here http://www.instructables.com/id/Display-Your-Instructables-on-Website-Dynamically-/ & here on GitHub https://gist.github.com/tealdeal/b125d90507db888a9a52
-*    danja.mewes profile on Instructables http://www.instructables.com/member/danja.mewes/
-*    danja.mewes on GitHub https://gist.github.com/tealdeal
-
 = 1.2.0 =
 * Added function to display a user's favorites
 * Made functions more efficient and removed redundancies
 * Minor corrections 
-* Added icon and corrected logo
 
 = 1.1.0 =
 * Add the function to display items in tiles.
