@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: ukthebunny
-Donate link: http://www.mickred.com/store/
+Link: http://www.x2labs.com/wp-dev/instructables-plugin/
 Tags: instructables, feed, rss, xml, list, projects
 Requires at least: 3.0.1
-Tested up to: 4.1
+Tested up to: 4.8.0
 Stable tag: 1
 License: MIT
 License URI: https://raw.githubusercontent.com/MrRedBeard/Instructables-Wordpress-Plugin/master/LICENSE
@@ -12,7 +12,7 @@ License URI: https://raw.githubusercontent.com/MrRedBeard/Instructables-Wordpres
 
 Display previews of Instructables Projects on your site linking to the source. Projects can be retrieved from Instructables by username or keyword. You can display the title, thumbnail (optional) and description or in tiles which display the thumbnail and title. In a list of a user's Instructables or a list of Instructables by keyword on your site.
 
-[Working Demo http://www.badbirdhouse.com/wordpress/plugins/instructables/](http://www.badbirdhouse.com/wordpress/plugins/instructables/ "Demo")
+[Working Demo http://www.x2labs.com/wp-dev/instructables-plugin/](http://www.x2labs.com/wp-dev/instructables-plugin/ "Demo")
 
 == Installation ==
 
