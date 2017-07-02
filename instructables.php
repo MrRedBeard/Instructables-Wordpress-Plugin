@@ -3,16 +3,17 @@
  * Plugin Name: Instructables
  * Description: Display Instructables Projects on your site linking to the source.
  * Version: 1.2.0
- * Tested up to: WP 4.1.0
+ * Tested up to: WP 4.8.0
  * Author: Britton Scritchfield aka MrRedBeard
- * Author URI: http://MRB.MickRed.com/
+ * Author URI: http://www.x2labs.com/
+ * http://www.x2labs.com/wp-dev/instructables-plugin/
  * License: MIT
  */
-/*  Copyright 2017 Britton Scritchfield aka MrRedBeard (email : mrredbeard@mickred.com)
+/*  Copyright 2017 Britton Scritchfield aka MrRedBeard (email : britton.scritchfield@gmail.com)
 
 MIT License
 
-Copyright (c) 2017 MrRedBeard
+Copyright (c) 2017 Britton Scritchfield aka MrRedBeard
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
