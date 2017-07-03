@@ -5,7 +5,7 @@ Tags: instructables, feed, rss, xml, list, projects
 Requires at least: 3.0.1
 Tested up to: 4.8.0
 Stable tag: 1
-License: MIT
+License: GPL
 License URI: https://raw.githubusercontent.com/MrRedBeard/Instructables-Wordpress-Plugin/master/LICENSE
 
 == Description ==
@@ -43,6 +43,9 @@ Display a list of a user's favorite projects
 3. Display Instructables Projects in tiles
 
 == Changelog ==
+= 1.2.1 =
+* Updated info
+* Verified working on latest WP version
 
 = 1.2.0 =
 * Added function to display a user's favorites
