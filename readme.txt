@@ -55,6 +55,15 @@ Display a list of a user's favorite projects
 6. Screenshots of the latest features 
 
 == Changelog ==
+= 2.0.3 =
+* Corrected an issue for servers that have case sensitive issues with paths
+
+= 2.0.2 =
+* Corrected a path issue
+
+= 2.0.1 =
+* Corrected an issue caused by GitHub Desktop which reverted the stylesheet
+
 = 2.0.0 =
 * Almost completly re-written
 * Should now be more compatible with themes written to WordPress Standards

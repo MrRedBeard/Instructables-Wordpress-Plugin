@@ -3,7 +3,7 @@
  * Plugin Name: Instructables
  * Plugin URI:  http://www.x2labs.com/wp-dev/instructables-plugin/
  * Description: Display Instructables Projects on your site linking to the source.
- * Version: 2.0
+ * Version: 2.0.3
  * Tested up to: WP 4.8.0
  * Author: Britton Scritchfield aka MrRedBeard
  * Author URI: http://www.x2labs.com/
@@ -19,7 +19,7 @@ ToDo: Rename Elements
 
 defined('ABSPATH') or die("No script kiddies please!");
 
-define('instructables_url_path', plugin_dir_url(__FILE__));
+define('instructables_url_path', plugin_dir_url( __FILE__ ));
 
 if (!class_exists('instructables')) 
 {
@@ -125,7 +125,7 @@ if (!class_exists('instructables'))
 		//Add custom StyleSheet
 		function instructables_stylesheet()
 		{
-			wp_enqueue_style( 'prefix-style', instructables_url_path . 'style.css' );
+			wp_enqueue_style( 'prefix-style', instructables_url_path . 'Style.css' );
 		}
 
 		/* Editor Menu Item End */
