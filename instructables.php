@@ -15,7 +15,6 @@
 /*
 ToDo: Fix style
 ToDo: Rename Elements
-ToDo: Adjust feed function to handle new feed types
 */
 
 defined('ABSPATH') or die("No script kiddies please!");
@@ -82,12 +81,6 @@ if (!class_exists('instructables'))
 			}
 		}
 		
-		//Add custom StyleSheet
-		function instructables_stylesheet()
-		{
-			wp_enqueue_style( 'prefix-style', plugins_url('Style.css', __FILE__) );
-		}
-		
 		/* Editor Menu Item Start */
 		//
 		// Add TinyMCE button and plugin filters
@@ -112,6 +105,7 @@ if (!class_exists('instructables'))
 			$plugin_array['instruct_button_script'] = instructables_url_path . 'button.js.php';  // Change this to reflect the path/filename to your js file
 			return $plugin_array;
 		}
+		
 
 		// Style the button with a dashicon icon instead of an image
 		function instructables_tinymce_button_dashicon() // my_tinymce_button_dashicon
@@ -126,6 +120,12 @@ if (!class_exists('instructables'))
 			}
 			</style>
 			<?php
+		}
+		
+		//Add custom StyleSheet
+		function instructables_stylesheet()
+		{
+			wp_enqueue_style( 'prefix-style', instructables_url_path . 'style.css' );
 		}
 
 		/* Editor Menu Item End */
@@ -187,8 +187,8 @@ if (!class_exists('instructables'))
 				<select name="instrct_type" id="instrct_type" class="postbox" onchange="TypeOfFeedChange(this);">
 					<option value="">Select something...</option>
 					<option value="user" <?php selected($value, 'user'); ?>>A User's Instructables</option>
-					<option value="followers" <?php selected($value, 'followers'); ?>>A User's Followers</option>
-					<option value="following" <?php selected($value, 'following'); ?>>Who a User Follows</option>
+					<!--<option value="followers" <?php selected($value, 'followers'); ?>>A User's Followers</option>
+					<option value="following" <?php selected($value, 'following'); ?>>Who a User Follows</option>-->
 					<option value="keywords" <?php selected($value, 'keywords'); ?>>Instructables by Keyword(s)</option>
 					<option value="userfav" <?php selected($value, 'userfav'); ?>>User's Favorites</option>
 					<option value="groups" <?php selected($value, 'groups'); ?>>A Group's Instructables</option>
@@ -537,10 +537,12 @@ if (!class_exists('instructables'))
 			}
 			elseif ( $type == 'followers' )
 			{
+				//Removed from API
 				$url = "http://www.instructables.com/member/" . get_post_meta($atts['id'], 'instrct_identifier', true) . "/rss.xml?show=FOLLOWERS";
 			}
 			elseif ( $type == 'following' )
 			{
+				//Removed from API
 				$url = "http://www.instructables.com/member/" . get_post_meta($atts['id'], 'instrct_identifier', true) . "/rss.xml?show=FOLLOWING";
 			}
 			elseif ( $type == 'keywords' )
@@ -555,7 +557,7 @@ if (!class_exists('instructables'))
 			}
 			elseif ( $type == 'userfav' )
 			{
-				$url = "http://www.instructables.com/member/" . get_post_meta($atts['id'], 'instrct_identifier', true) . "/rss.xml?show=good";
+				$url = "http://www.instructables.com/member/" . get_post_meta($atts['id'], 'instrct_identifier', true) . "/rss.xml?show=good&sort=RECENT";
 			}
 			elseif ( $type == 'groups' )
 			{
@@ -588,6 +590,8 @@ if (!class_exists('instructables'))
 		//Process XML that was handed off by function calling
 		public function instpProcessXML($url, $num, $layout, $thumb, $title)
 		{
+			//ToDo: Fix Feeds - following, followers - Appears to have been removed from API
+			
 			$feed = simplexml_load_file($url);
 			$feed_array = array();
 			$itemCTR = 0;
@@ -595,35 +599,42 @@ if (!class_exists('instructables'))
 			if(strlen($title) > 0)
 			{
 				$postx = "<h2>" . $title . "</h2>";
+				//$postx = $postx . "<h2>" . $url . "</h2>";
 			}
 			if($layout == 'post')
 			{
 				foreach($feed->channel->item as $item)
 				{
-					$postx = $postx . "<div class='liPSC_post'>";
-					$postx = $postx . "<h2 class='liPSC_post_title'><a href='" . $item->link . "' target='_blank'>" . $item->title . "</a></h2>";
+					$postx = $postx . "<article class='post instructables-post'>";
+					$postx = $postx . "<header>";
+					$postx = $postx . "<h2 class='entry-title'><a href='" . $item->link . "' target='_blank'>" . $item->title . "</a></h2>";
+					$postx = $postx . "</header>";
 					if(strpos($item->imageThumb,"com") && $thumb == 'on')
 					{
+						$postx = $postx . '<div class="post-thumbnail">';
 						$postx = $postx . "<a target='_Blank' href='" . $item->link . "' target='_blank'>";
-						$postx = $postx . "<img class='liPSC_post_thumb' src='" . $item->imageThumb . "' />";
+						$postx = $postx . "<img class='wp-post-image' src='" . $item->imageThumb . "' />";
 						$postx = $postx . "</a>";
+						$postx = $postx . '</div>';
 					}
 					elseif($thumb == 'on')
 					{
+						$postx = $postx . '<div class="post-thumbnail">';
 						$postx = $postx . "<a target='_Blank' href='" . $item->link . "' target='_blank'>";
-						$postx = $postx . "<img class='liPSC_post_thumb' src='http://www.instructables.com" . $item->imageThumb . "' />";
+						$postx = $postx . "<img class='wp-post-image' src='http://www.instructables.com" . $item->imageThumb . "' />";
 						$postx = $postx . "</a>";
+						$postx = $postx . '</div>';
 					}
 					
-					$postx = $postx . "<div class='liPSC_post_content'>";
+					$postx = $postx . "<div class='entry-content'>";
 					
 					$descx = preg_replace('/<!--(.|\s)*?-->/' , '', preg_replace('/<a[^>]+\>/i', '', preg_replace('/<img[^>]+\>/i', '', $item->description)));
 					$descx = str_replace("&raquo;", "", str_replace("Continue Reading", "", str_replace("&nbsp;...<br/>By:", "By:", $descx)));
-					$postx = $postx . $descx;
+					$postx = $postx . "<p>" . $descx . "</p>";
 					
 					$postx = $postx . '</div>';//Close Post Content
-					$postx = $postx . '<div class="liPSC_post_readmore"><a href="' . $item->link . '">READ MORE</a></div>';
-					$postx = $postx . '</div>';//Close Post
+					$postx = $postx . '<p><a href="' . $item->link . '">READ MORE...</a></p>';
+					$postx = $postx . '</article>';//Close Post
 					
 					$itemCTR++;
 					if(is_numeric($num) == true && $itemCTR >= $num)
@@ -634,10 +645,16 @@ if (!class_exists('instructables'))
 			}
 			elseif($layout == 'tile')
 			{
-				$postx = $postx . "<div class='liPSC_post_tiles'>";
+				$postx = $postx . "<div class='instructables_tiles'>";
 				foreach($feed->channel->item as $item)
 				{
-					$postx = $postx . "<div class='liPSC_tile'>";
+					$postx = $postx . "<div class='instructables_tile'>";
+					
+					$postx = $postx . "<header>";
+					$postx = $postx . "<h3><a target='_Blank' href='" . $item->link . "'><strong>" . $item->title . "</strong></a></h3>";
+					$postx = $postx . "</header>";
+					
+					$postx = $postx . "<div class='post-thumbnail'>";
 					if(strpos($item->imageThumb,"com"))
 					{
 						$postx = $postx . "<a target='_Blank' href='" . $item->link . "'><img src='" . $item->imageThumb . "' /></a>";
@@ -646,8 +663,9 @@ if (!class_exists('instructables'))
 					{
 						$postx = $postx . "<a target='_Blank' href='" . $item->link . "'><img src='http://www.instructables.com" . $item->imageThumb . "' /></a>";
 					}
+					$postx = $postx . "</div>";
 					
-					$postx = $postx . "<a target='_Blank' href='" . $item->link . "'><strong>" . $item->title . "</strong></a>";
+					
 					$postx = $postx . "</div>";
 					
 					$itemCTR++;
@@ -737,13 +755,14 @@ if (!class_exists('instructables'))
 						Added new feed types
 						<ul style="list-style: disc; margin-left: 30px;">
 							<li>A groups Instructables</li>
-							<li>A user's followers</li>
 							<li>A user's favorites</li>
-							<li>Who a user follows</li>
 							<li>Keyword with ability to have multiple keywords</li>
 							<li>All recent featured Instructables</li>
 							<li>All recent Instructables</li>
 						</ul>
+					</p>
+					<p>
+						Feeds for "A user's followers" & "Who a user follows" appear to have been removed from the API.
 					</p>
 					
 					<h2>Legacy ShortCodes still work</h2>
@@ -771,6 +790,11 @@ if (!class_exists('instructables'))
 						&nbsp;&nbsp;or<br />
 						Comment on the <a href="https://www.instructables.com/id/Instructables-Wordpress-Plugin/" target="_BLANK">Insrtuctables Page for this plugin</a>
 					</p>
+					
+					<p>
+						If your hosting solution does not support simplexml_load_file() then please contact me. I may need to develop a curl method if this is a widespread issue.
+					</p>
+					<img class="alignright" height="250" src="<?php echo plugin_dir_url(__FILE__) . 'images/robot.png'; ?>" />
 				</div>
 			<?php
 		}

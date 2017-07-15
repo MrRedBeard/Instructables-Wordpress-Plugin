@@ -36,18 +36,18 @@
 								if($q->have_posts())
 								{
 									$i = 0;
-									$len = count($q);
+									$len = wp_count_posts( 'instructables_sc' )->publish;
 									while( $q->have_posts() ) : $q->the_post();
 										?>
 											{ text: '<?php echo get_the_title(); ?>', value: '<?php echo the_ID(); ?>' }
 										<?php
 										if ($i != $len - 1)
 										{
-											echo PHP_EOL;
+											echo ',' . PHP_EOL;
 										}
 										else
 										{
-											echo ',' . PHP_EOL;
+											echo PHP_EOL;
 										}
 										$i++;
 									endwhile;
