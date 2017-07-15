@@ -12,6 +12,12 @@ License URI: https://raw.githubusercontent.com/MrRedBeard/Instructables-Wordpres
 
 Display previews of Instructables Projects on your site linking to the source. Projects can be retrieved from Instructables by username or keyword. You can display the title, thumbnail (optional) and description or in tiles which display the thumbnail and title. In a list of a user's Instructables or a list of Instructables by keyword on your site.
 
+Improved the layout and style - Should now be more compatible with themes written to WordPress Standards
+Users can now define and store feed definitions
+Multiple keywords can be used
+A groups Instructables option has been added
+Other feed types added
+
 [Working Demo http://www.x2labs.com/wp-dev/instructables-plugin/](http://www.x2labs.com/wp-dev/instructables-plugin/ "Demo")
 
 == Installation ==
@@ -26,7 +32,10 @@ If your hosting solution does not support simplexml_load_file() then please cont
 None yet so ask your questions.
 
 = How do I use this plugin? =
+Define Feeds under Settings
+Edit or Create page use Instructables icon on editor to place new feed
 
+Legacy ShortCodes Method
 Display a user's projects:
 [instructablesUP username="MrRedBeard" num="2" thumb="true" tileview="true"]
 
@@ -38,11 +47,25 @@ Display a list of a user's favorite projects
 
 == Screenshots ==
 
-1. Display Instructables Projects by a Username
-2. Display Instructables Projects by keyword
-3. Display Instructables Projects in tiles
+1. Display Instructables Projects as Posts
+2. Display Instructables Projects as Tiles
+3. Instructables Feeds from Editor
+4. Instructables Feed Editor
+5. Instructables Feed List
+6. Screenshots of the latest features 
 
 == Changelog ==
+= 2.0.0 =
+* Almost completly re-written
+* Should now be more compatible with themes written to WordPress Standards
+* Users can now define and store feed definitions
+* Multiple keywords can be used
+* A groups Instructables option has been added
+* Other feed types added
+* Improved the layout and style
+* Backwards compatibility
+* Verified working on latest WP version
+
 = 1.2.1 =
 * Updated info
 * Verified working on latest WP version
