@@ -4,7 +4,7 @@
  * Plugin URI:  http://www.x2labs.com/wp-dev/instructables-plugin/
  * Description: Display Instructables Projects on your site linking to the source.
  * Version: 2.0.3
- * Tested up to: WP 4.8.0
+ * Tested up to: WP 4.8.1
  * Author: Britton Scritchfield aka MrRedBeard
  * Author URI: http://www.x2labs.com/
  * License: GPL2
@@ -491,7 +491,7 @@ if (!class_exists('instructables'))
 				$url = "http://www.instructables.com/rss.xml";
 			}
 			
-			echo instructables::instpProcessXML($url, $num, $layout, $thumb, "");
+			return instructables::instpProcessXML($url, $num, $layout, $thumb, "");
 		}
 		
 		//Shortcode gets custom post type values for Instructables Feeds
@@ -581,9 +581,9 @@ if (!class_exists('instructables'))
 			echo "Title: " . $title . "<BR />";
 			*/
 			
-			echo instructables::instpProcessXML($url, $num, $layout, $thumb, $title);
+			return instructables::instpProcessXML($url, $num, $layout, $thumb, $title);
 			
-			wp_reset_query();
+			//wp_reset_query();
 		}
 		
 		

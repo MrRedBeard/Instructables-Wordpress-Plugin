@@ -3,7 +3,7 @@ Contributors: ukthebunny
 Link: http://www.x2labs.com/wp-dev/instructables-plugin/
 Tags: instructables, feed, rss, xml, list, projects
 Requires at least: 3.0.1
-Tested up to: 4.8.0
+Tested up to: 4.8.1
 Stable tag: 1
 License: GPL
 License URI: https://raw.githubusercontent.com/MrRedBeard/Instructables-Wordpress-Plugin/master/LICENSE
@@ -55,6 +55,9 @@ Display a list of a user's favorite projects
 6. Screenshots of the latest features 
 
 == Changelog ==
+= 2.0.4 =
+* ShortCode mistake - Found that I echoed the content instead of returning it.
+
 = 2.0.3 =
 * Corrected an issue for servers that have case sensitive issues with paths
 
