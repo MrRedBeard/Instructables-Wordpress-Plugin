@@ -3,7 +3,7 @@
  * Plugin Name: Instructables
  * Plugin URI:  http://www.x2labs.com/wp-dev/instructables-plugin/
  * Description: Display Instructables Projects on your site linking to the source.
- * Version: 2.0.3
+ * Version: 2.0.4
  * Tested up to: WP 4.8.1
  * Author: Britton Scritchfield aka MrRedBeard
  * Author URI: http://www.x2labs.com/
